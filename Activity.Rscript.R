@@ -166,17 +166,10 @@ p2 <- ggplot(hours, aes(x = "", y = n, fill = hours_label)) +
 
 p2
 
-# Plot both p1 and p2 on one page. Remove this step from the Rise code 
-
-if (!requireNamespace("gridExtra", quietly = TRUE)) install.packages("gridExtra")
-gridExtra::grid.arrange(p1, p2, ncol = 2)
-
-# Remove step from Rise code
-
 # 4.1.1.1 Transformation of variable Health in general
 
-# Regroup health in general in two broader categories:
-# "Good or very good health" and "Poor health"
+# Create a new variable called "health_binary" by regrouping health in general 
+# in two broader categories: "Good or very good health" and "Poor health"
 
 census2021teaching$health_binary <- ifelse(
   census2021teaching$health_in_general %in% c(1, 2), "Good or very good health",
@@ -363,19 +356,19 @@ Age <- census2021teaching %>%
   # Chi square test
   
   # a) Creating cross tabulations to be tested
-  chisq.health_hours <- table(census2021teaching$Poor_health, census2021teaching$hours_per_week_worked)
-  chisq.health_age <- table(census2021teaching$Poor_health, census2021teaching$resident_age_7d)
-  chisq.health_sex <- table(census2021teaching$Poor_health, census2021teaching$sex)
-  chisq.health_ethnicity <- table(census2021teaching$Poor_health, census2021teaching$ethnic_group_tb_6a)
-  chisq.health_classes <- table(census2021teaching$Poor_health, census2021teaching$approx_social_grade)
+  tabulation.health_hours <- table(census2021teaching$Poor_health, census2021teaching$hours_per_week_worked)
+  tabulation.health_age <- table(census2021teaching$Poor_health, census2021teaching$resident_age_7d)
+  tabulation.health_sex <- table(census2021teaching$Poor_health, census2021teaching$sex)
+  tabulation.health_ethnicity <- table(census2021teaching$Poor_health, census2021teaching$ethnic_group_tb_6a)
+  tabulation.health_classes <- table(census2021teaching$Poor_health, census2021teaching$approx_social_grade)
   
   
   # b) chi square test on health and our 5 variables
-  chisq.test(chisq.health_hours)
-  chisq.test(chisq.health_age)
-  chisq.test(chisq.health_sex)
-  chisq.test(chisq.health_ethnicity)
-  chisq.test(chisq.health_classes)
+  chisq.test(tabulation.health_hours)
+  chisq.test(tabulation.health_age)
+  chisq.test(tabulation.health_sex)
+  chisq.test(tabulation.health_ethnicity)
+  chisq.test(tabulation.health_classes)
 
   
 ## 5 Regression model
