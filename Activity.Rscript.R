@@ -84,7 +84,7 @@ census2021teaching %>%
     hours_label = factor(
       hours_code,
       levels = c(1, 2, 3, 4, -8),
-      labels = c("]0 – 15]", "[16 – 30]", "[31 – 48]", "[49 and +]", "Does not apply")
+      labels = c("[0 – 15]", "[16 – 30]", "[31 – 48]", "[49 and +]", "Does not apply")
     )
   ) %>%
   count(hours_label) %>%
@@ -139,7 +139,7 @@ hours <- census2021teaching %>%
     hours_label = factor(
       hours_code,
       levels = c(1, 2, 3, 4, -8),
-      labels = c("]0 – 15]", "[16 – 30]", "[31 – 48]", "[49 and +]", "Not applicable")
+      labels = c("[0 – 15]", "[16 – 30]", "[31 – 48]", "[49 and +]", "Not applicable")
     )
   ) %>%
   filter(!is.na(hours_label)) %>%
