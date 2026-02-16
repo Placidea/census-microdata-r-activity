@@ -1,4 +1,4 @@
-## 1- Install and load the main packages #
+## 1- Install and load the main packages 
 
 # Install packages
 
@@ -19,7 +19,7 @@ library(patchwork)
 library(gridExtra)
 library(haven)
 
-## 2- Load the dataset and make a copy #
+## 2- Load the dataset and make a copy 
 
 publicmicrodatateachingsample <- read_sav("G:/Exploring census Microdata Module/Case study/publicmicrodatateachingsample.sav")
 
@@ -28,7 +28,7 @@ publicmicrodatateachingsample <- read_sav("G:/Exploring census Microdata Module/
 
 census2021teaching <- publicmicrodatateachingsample
 
-## 3- Drop unnecessary variables #
+## 3- Drop unnecessary variables 
 
 census2021teaching <- census2021teaching[,c("health_in_general",
                                             "hours_per_week_worked",
@@ -40,7 +40,7 @@ census2021teaching <- census2021teaching[,c("health_in_general",
 
 ## 4- Exploratory analysis
 
-# 4.1- Univariate analysis #
+# 4.1- Univariate analysis 
 
 # 4.1.1 Univariate analysis for health in general and hours worked
 
@@ -416,7 +416,7 @@ Age <- census2021teaching %>%
   census2021teaching$ethnic_group_tb_6a            <- relevel(census2021teaching$ethnic_group_tb_6a,            ref = "White")
   census2021teaching$approx_social_grade         <- relevel(census2021teaching$approx_social_grade,         ref = "Higher, intermediate managers")
   
-## 6 Fit logistic regression 
+# Fit logistic regression 
   
   model_health <- glm(
     Poor_health ~ hours_per_week_worked + resident_age_7d + sex + ethnic_group_tb_6a + approx_social_grade,
